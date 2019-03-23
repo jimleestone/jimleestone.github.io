@@ -55,7 +55,9 @@ layout: default
                 {% if site.disqus_username %}
                 <!-- disqus 评论框 start -->
                 <div class="comment">
+                    <!--
                     <div id="disqus_thread" class="disqus-thread"></div>
+                    -->
                 </div>
                 <!-- disqus 评论框 end -->
                 {% endif %}
@@ -124,17 +126,36 @@ layout: default
 
 {% if site.disqus_username %}
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<!-- disqus 反向代理脚本 -->
+<script src="{{ "/js/iDisqus.min.js" | prepend: site.baseurl }}"></script>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
+    
     var disqus_shortname = "{{site.disqus_username}}";
     var disqus_identifier = "{{page.id}}";
     var disqus_url = "{{site.url}}{{page.url}}";
-
+    /*
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
         (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
+    */
+    
+    $(document).ready(function () {
+    var disq = new iDisqus('comment', {
+        forum: disqus_shortname,
+        api: 'http://disqus.nyaa.cloud',
+        site: 'http://nyaa.cloud',
+        url: disqus_url,
+        identifier: disqus_identifier,
+        mode: 1,
+        timeout: 5000,
+        init: true,
+        badge: "Kaguya"
+      });
+    disq.count();
+  });
 </script>
 <!-- disqus 公共JS代码 end -->
 {% endif %}
