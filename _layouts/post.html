@@ -54,11 +54,13 @@ layout: default
 
                 {% if site.disqus_username %}
                 <!-- disqus 评论框 start -->
+                <!--
                 <div id="comment" class="comment">
-                    <!--
                     <div id="disqus_thread" class="disqus-thread"></div>
-                    -->
                 </div>
+                -->
+                <div id="comment"></div>
+
                 <!-- disqus 评论框 end -->
                 {% endif %}
 
@@ -127,16 +129,13 @@ layout: default
 {% if site.disqus_username %}
 <!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
 <!-- disqus 反向代理脚本 -->
-<script src="{{ "/js/iDisqus.js" | prepend: site.baseurl }}"></script>
+<script src="{{ "/js/iDisqus.min.js" | prepend: site.baseurl }}"></script>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
     
     var disqus_shortname = "{{site.disqus_username}}";
     var disqus_identifier = "{{page.id}}";
     var disqus_url = "{{site.url}}{{page.url}}";
-    alert(disqus_shortname);
-    alert(disqus_identifier);
-    alert(disqus_url);
 
     /*
     (function() {
@@ -146,20 +145,18 @@ layout: default
     })();
     */
     
-    $(document).ready(function () {
-        var disq = new iDisqus('comment', {
+    var disq = new iDisqus('comment', {
                 forum: disqus_shortname,
                 site: 'http://nyaa.cloud',
-                api: 'http://disqus.nyaa.cloud',
-                identifier: disqus_identifier,
+                // api: 'https://disqus.nyaa.cloud/api',
+                api: 'http://45.77.10.229:8443/api',
                 url: disqus_url,
-                mode: 2,
-                timeout: 3000,
-                init: true,
-                emojiPreview: true
+                identifier: disqus_identifier,
+                init: true
             });
             disq.count();
-  });
+
+        
 </script>
 <!-- disqus 公共JS代码 end -->
 {% endif %}
