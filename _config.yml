@@ -3,7 +3,7 @@ title: Jim Blog
 author: Kaguya
 home-title: 次元の狭間
 SEOTitle: 次元の狭間 | Jim Blog
-header-img: img/home-bg.jpg
+header-img: https://res.cloudinary.com/dds4xetpt/image/upload/v1553520968/posts/banner/home-bg.jpg
 email: jimleestone@gmail.com
 description: "一緒に新世界を探そう！"
 keyword: "Jim Blog, 次元の狭間, blog, 博客, 个人网站, 互联网, Web, Java, JavaScript, 前端, ACG, 动漫, 二次元"
@@ -83,7 +83,7 @@ ga_domain: nyaa.cloud
 sidebar: true
 sidebar-about-description: "on the road"
 # use absolute URL, seeing it's used in both `/` and `/about/`
-sidebar-avatar: /img/avatar.jpg
+sidebar-avatar: https://res.cloudinary.com/dds4xetpt/image/upload/v1553521011/posts/avatar/avatar.jpg
 
 
 
