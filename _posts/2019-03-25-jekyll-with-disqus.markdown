@@ -4,7 +4,7 @@ title: "如何科学使用Disqus"
 subtitle: "How to use Disqus in your awesome Jekyll blog"
 author: "Kaguya"
 header-img: "https://res.cloudinary.com/dds4xetpt/image/upload/v1553520774/posts/2019-03-23/jekyll-webpack.png"
-header-mask: 0.8
+header-mask: 0.6
 tags:
   - Jekyll
   - Disqus
@@ -26,20 +26,20 @@ Nginx
 Disqus API  
 
 # 正文
-核心部分应该是Disqus的API转发服务了，所幸已经有先驱用PHP写了一整套的调用，在GitHub上放了一个repo，即[Disqus PHP API][disqus-php-api]，repo中也详细说明了如何修改前端脚本  
+核心部分应该是Disqus的API转发服务了，所幸已经有先驱用PHP写了一整套的调用，在GitHub上放了一个repo，即[Disqus PHP API][disqus-php-api]{:target="_blank"}，repo中也详细说明了如何修改前端脚本  
 和页面调用来访问Disqus的获取评论列表和发表评论的API，前端的修改我们稍后再叙，先来看看API后端的部署吧。
 
 ### Docker + docker-compose 环境搭建
 （略）
 
 ### Disqus PHP API的部署
-我fork了上述仓库的项目并且自己写了个docker-compose的自动部署脚本，存放在了[这个repo][jimleestone-disqus-php-api]中。
+我fork了上述仓库的项目并且自己写了个docker-compose的自动部署脚本，存放在了[这个repo][jimleestone-disqus-php-api]{:target="_blank"}中。
 
 在你的VPS上clone这个repo  
 ```
 git clone https://github.com/jimleestone/disqus-php-api.git
 ```
-修改api目录下的config.php文件为你自己Disqus open API的相关配置，请自行准备梯子或其他工具注册一个Disqus账号并且申请他们的API KEY，如果你已经有了Disqus账号，请直接去往[API KEY申请][disqus-api-apply]页面进行申请，其中Callback URL先随便填写，之后马上会进行修改，而具体如何配置 `config.php` 在该文件中已经有比较详细的说明了  
+修改api目录下的config.php文件为你自己Disqus open API的相关配置，请自行准备梯子或其他工具注册一个Disqus账号并且申请他们的API KEY，如果你已经有了Disqus账号，请直接去往[API KEY申请][disqus-api-apply]{:target="_blank"}页面进行申请，其中Callback URL先随便填写，之后马上会进行修改，而具体如何配置 `config.php` 在该文件中已经有比较详细的说明了  
 ```
 cd disqus-php-api
 nano api/config.php
@@ -56,7 +56,7 @@ server {
 ```
 docker-compose up -d
 ```
-假设你的域名是 `example.com`，那么接下来请回到[Disqus API申请][disqus-api-apply]页面，在Settings中配置回调地址Callback URL为 `http://example.com/login.php`，保存成功后，浏览器访问这个地址，会跳转到Disqus API的授权页面，至此API后端搭建完了  
+假设你的域名是 `example.com`，那么接下来请回到[Disqus API申请][disqus-api-apply]{:target="_blank"}页面，在Settings中配置回调地址Callback URL为 `http://example.com/login.php`，保存成功后，浏览器访问这个地址，会跳转到Disqus API的授权页面，至此API后端搭建完了  
 
 ### 博客前端配置修改
 
