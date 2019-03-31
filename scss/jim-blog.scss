@@ -1,0 +1,12 @@
+@import 'variables';
+
+// Global Components
+
+body {
+  font-size: 16px;
+  color: $gray-dark;
+  overflow-x: hidden;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

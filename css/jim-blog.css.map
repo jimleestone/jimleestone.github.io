@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIA,IAAK;EACH,SAAS,EAAE,IAAI;EACf,KAAK,ECHK,OAAmB;EDI7B,UAAU,EAAE,MAAM;EAClB,cAAc,EAAE,IAAI;EACpB,sBAAsB,EAAE,WAAW;EACnC,uBAAuB,EAAE,SAAS",
+"sources": ["../scss/jim-blog.scss","../scss/_variables.scss"],
+"names": [],
+"file": "jim-blog.css"
+}

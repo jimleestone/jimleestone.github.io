@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
     // Project configuration.
     grunt.initConfig({
@@ -9,22 +9,13 @@ module.exports = function(grunt) {
                 dest: 'js/<%= pkg.name %>.min.js'
             }
         },
-        less: {
-            expanded: {
+        sass: {
+            dist: {
                 options: {
-                    paths: ["css"]
+                    style: 'expanded'
                 },
                 files: {
-                    "css/<%= pkg.name %>.css": "less/<%= pkg.name %>.less"
-                }
-            },
-            minified: {
-                options: {
-                    paths: ["css"],
-                    cleancss: true
-                },
-                files: {
-                    "css/<%= pkg.name %>.min.css": "less/<%= pkg.name %>.less"
+                    "css/<%= pkg.name %>.css": "scss/<%= pkg.name %>.scss"
                 }
             }
         },
@@ -51,9 +42,9 @@ module.exports = function(grunt) {
                     spawn: false,
                 },
             },
-            less: {
-                files: ['less/*.less'],
-                tasks: ['less'],
+            sass: {
+                files: ['scss/*.scss'],
+                tasks: ['sass'],
                 options: {
                     spawn: false,
                 }
@@ -62,12 +53,13 @@ module.exports = function(grunt) {
     });
 
     // Load the plugins.
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-banner');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task(s).
-    grunt.registerTask('default', ['uglify', 'less', 'usebanner']);
+    grunt.registerTask('default', ['uglify', 'sass', 'usebanner']);
 
 };
